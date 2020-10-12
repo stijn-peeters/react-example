@@ -53,7 +53,11 @@ ul > li {
   vertical-align: top;
   text-align: center;
 }
+a {
+  color: #1f1e1e;
+}
 .icons {
-  position: absolute;
+  position: relative;
+  color: #1f1e1e;
   bottom: -80px;
 }
