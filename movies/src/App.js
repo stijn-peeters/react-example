@@ -83,13 +83,12 @@ const App = () => {
         )}
       </ul>
       <div className="icons">
-        <p>Icons made by</p>
+        Icons made by
         <a href="https://www.flaticon.com/authors/freepik" title="Freepik">
           Freepik
         </a>
-        <p>from</p>
+        from
         <a href="https://www.flaticon.com/" title="Flaticon">
-          {" "}
           www.flaticon.com
         </a>
       </div>
