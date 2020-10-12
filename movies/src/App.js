@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 const api_key = "?api_key=3c55e7b0323dc576e528420b10e3a736";
 const poster_path = "http://image.tmdb.org/t/p/w500/";
 
@@ -53,12 +53,12 @@ const App = () => {
                 <div className="card-image">
                   {movies.poster_path == null ? (
                     <img
-                      alt="image not found"
+                      alt="resource not available"
                       src="https://i.imgur.com/eYard5G.png"
                     ></img>
                   ) : (
                     <img
-                      alt="http://clipart-library.com/images/ziX5n9MjT.png"
+                      alt="https://i.imgur.com/eYard5G.png"
                       src={poster_path + movies.poster_path}
                     ></img>
                   )}
@@ -67,7 +67,7 @@ const App = () => {
                   <h1>{movies.title}</h1>
                   <p>{movies.overview}</p>
                   <br></br>
-                  {movies.release_date == "" ? (
+                  {movies.release_date === "" ? (
                     <p>Not yet released</p>
                   ) : (
                     <p>Released on: {movies.release_date}</p>
