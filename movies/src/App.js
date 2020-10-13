@@ -33,9 +33,6 @@ const App = () => {
     },
     [movie, apiData]
   );
-  // useEffect(() => {
-  //   console.log(apiData);
-  // }, [apiData]);
 
   return (
     <div>
@@ -49,7 +46,12 @@ const App = () => {
         />
         <button>Search</button>
       </form>
-      <p className="placeholder">[placeholder for previous searches]</p>
+      <p className="placeholder">
+        [placeholder for previous searches]
+        {apiData.map((keyword) => {
+          return keyword.name;
+        })}
+      </p>
       <ul>
         {apiData[apiData.length - 1]
           ? apiData[apiData.length - 1].apicall.map((movies) => (
