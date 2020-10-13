@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 const api_key = "?api_key=3c55e7b0323dc576e528420b10e3a736";
 const poster_path = "http://image.tmdb.org/t/p/w500/";
 
@@ -25,6 +25,7 @@ const App = () => {
             ...apiData,
             {
               apicall: data.results,
+              name: movie,
             },
           ]);
           setMovie("");
@@ -32,6 +33,9 @@ const App = () => {
     },
     [movie, apiData]
   );
+  useEffect(() => {
+    console.log(apiData);
+  }, [apiData]);
 
   return (
     <div>
@@ -45,38 +49,39 @@ const App = () => {
         />
         <button>Search</button>
       </form>
+      <p className="placeholder">[placeholder for previous searches]</p>
       <ul>
-        {apiData.map((apiSearch) =>
-          apiSearch.apicall.map((movies) => (
-            <li key={movies.id}>
-              <div className="card">
-                <div className="card-image">
-                  {movies.poster_path == null ? (
-                    <img
-                      alt="resource not available"
-                      src="https://i.imgur.com/eYard5G.png"
-                    ></img>
-                  ) : (
-                    <img
-                      alt="https://i.imgur.com/eYard5G.png"
-                      src={poster_path + movies.poster_path}
-                    ></img>
-                  )}
+        {apiData[apiData.length - 1]
+          ? apiData[apiData.length - 1].apicall.map((movies) => (
+              <li key={movies.id}>
+                <div className="card">
+                  <div className="card-image">
+                    {movies.poster_path == null ? (
+                      <img
+                        alt="resource not available"
+                        src="https://i.imgur.com/eYard5G.png"
+                      ></img>
+                    ) : (
+                      <img
+                        alt="https://i.imgur.com/eYard5G.png"
+                        src={poster_path + movies.poster_path}
+                      ></img>
+                    )}
+                  </div>
+                  <div className="container">
+                    <h1>{movies.title}</h1>
+                    <p>{movies.overview}</p>
+                    <br></br>
+                    {movies.release_date === "" ? (
+                      <p>Not yet released</p>
+                    ) : (
+                      <p>Released on: {movies.release_date}</p>
+                    )}
+                  </div>
                 </div>
-                <div className="container">
-                  <h1>{movies.title}</h1>
-                  <p>{movies.overview}</p>
-                  <br></br>
-                  {movies.release_date === "" ? (
-                    <p>Not yet released</p>
-                  ) : (
-                    <p>Released on: {movies.release_date}</p>
-                  )}
-                </div>
-              </div>
-            </li>
-          ))
-        )}
+              </li>
+            ))
+          : ""}
       </ul>
 
       <div className="icons">
