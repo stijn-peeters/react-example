@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useState } from "react";
 const api_key = "?api_key=3c55e7b0323dc576e528420b10e3a736";
 const poster_path = "http://image.tmdb.org/t/p/w500/";
 
