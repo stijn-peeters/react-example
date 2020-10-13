@@ -33,9 +33,9 @@ const App = () => {
     },
     [movie, apiData]
   );
-  useEffect(() => {
-    console.log(apiData);
-  }, [apiData]);
+  // useEffect(() => {
+  //   console.log(apiData);
+  // }, [apiData]);
 
   return (
     <div>
